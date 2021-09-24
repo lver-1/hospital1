@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/media/image/favicon.png"/>
+
+    <!-- Plugin styles -->
+    <link rel="stylesheet" href="vendors/bundle.css" type="text/css">
+
+    <!-- Css -->
+    <link rel="stylesheet" href="vendors/datepicker/daterangepicker.css" type="text/css">
+      <!-- 引入样式 -->
+      <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- App styles -->
+    <link rel="stylesheet" href="assets/css/app.css" type="text/css">
+
+
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+
+  <script src="vendors/bundle.js"></script>
+  <script src="vendors/datepicker/daterangepicker.js"></script>
+  <script src="assets/js/custom.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="vendors/dataTable/jquery.dataTables.min.js"></script>
+  <script src="vendors/dataTable/dataTables.bootstrap4.min.js"></script>
+  <script src="vendors/dataTable/dataTables.responsive.min.js"></script>
+  <script src="assets/js/examples/datatable.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</html>
