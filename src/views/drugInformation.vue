@@ -58,6 +58,7 @@
                                             <td class="col-md-3">药品名称:{{medicine.medicineName}}</td>
                                             <td class="col-md-3">生产厂家:{{medicine.medicineFactory}}</td>
                                             <td class="col-md-3">药品批号:{{medicine.medicineNo}}</td>
+                                        </tr>
 
                                         <tr>
                                             <td class="col-md-3">药品类型:{{medicine.medicineType}}</td>

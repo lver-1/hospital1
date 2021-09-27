@@ -11,7 +11,11 @@ import AddDrug from '../views/addDrug.vue'
 import ManagerDrug from '../views/managerDrug.vue'
 import DisableDrug from '../views/disableDrug.vue'
 import AddDrug2 from '../views/addDrug2.vue'
-import Medicine_in from '../views/Medicine_in.vue'
+import Registered from '../views/registered.vue'
+import QueryRegisteredRecord from '../views/queryRegisteredRecord.vue'
+import ApplyCard from '../views/applyCard.vue'
+import Test from '../views/test.vue'
+
 
 
 import ElementUI from 'element-ui';
@@ -26,6 +30,26 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/test',
+    name: 'Test',
+    component: Test
+  },
+  {
+    path: '/registered',
+    name: 'Registered',
+    component: Registered
+  },
+  {
+    path: '/queryRegisteredRecord',
+    name: 'QueryRegisteredRecord',
+    component: QueryRegisteredRecord
+  },
+  {
+    path: '/applyCard',
+    name: 'ApplyCard',
+    component: ApplyCard
+  },
+  {
     path: '/addDrug',
     name: 'AddDrug',
     component: AddDrug
@@ -36,12 +60,12 @@ const routes = [
     name: 'AddDrug2',
     component: AddDrug2
   },
+
   {
     path: '/changeDrug',
     name: 'ChangeDrug',
     component: ChangeDrug
   },
-
 
   {
     path: '/managerDrug',
@@ -79,8 +103,6 @@ const routes = [
     name: 'AddPrescription',
     component: AddPrescription
   },
-
-
 
   {
     path: '/',

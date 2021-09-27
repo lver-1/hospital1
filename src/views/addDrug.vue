@@ -71,22 +71,22 @@
                                             <div class="form-row">
                                                 <div class="col-md-3 col-xs-3 mb-3">
                                                     <label>药品名称</label>
-                                                    <input v-model="medicine.medicineName" type="text" class="form-control" placeholder="名称" value="眼药水" required>
+                                                    <input v-model="medicine.medicineName" type="text" class="form-control" placeholder="名称" value="" required>
                                                 </div>
 
                                                 <div class="col-md-3 col-xs-3 mb-3">
                                                     <label >生产厂家</label>
-                                                    <input v-model="medicine.medicineFactory" type="text" class="form-control" placeholder="生产厂家" value="科兴" required>
+                                                    <input v-model="medicine.medicineFactory" type="text" class="form-control" placeholder="生产厂家" value="" required>
                                                 </div>
 
                                                 <div class="col-md-3 col-xs-3 mb-3">
                                                     <label>药品批号</label>
-                                                    <input v-model="medicine.medicineNo" type="text" class="form-control" placeholder="批号" value="17717" required>
+                                                    <input v-model="medicine.medicineNo" type="text" class="form-control" placeholder="批号" value="" required>
                                                 </div>
 
                                                 <div class="col-md-3 col-xs-3 mb-3">
                                                     <label>药品规格</label>
-                                                    <input v-model="medicine.medicineSpecification" type="text" class="form-control" placeholder="规格" value="1g/mg" required>
+                                                    <input v-model="medicine.medicineSpecification" type="text" class="form-control" placeholder="规格" value="" required>
                                                 </div>
 
                                                 <div class="col-md-3 col-xs-3 mb-3">
@@ -100,7 +100,7 @@
 
                                                 <div class="col-md-3 col-xs-3 mb-3">
                                                     <label>单位</label>
-                                                    <input v-model="medicine.medicineUnit" type="text" class="form-control" id="validationCustom03" placeholder="单位" value="克" required>
+                                                    <input v-model="medicine.medicineUnit" type="text" class="form-control" id="validationCustom03" placeholder="单位" value="" required>
 
                                                 </div>
 
@@ -110,15 +110,16 @@
 
                                                 </div>
 
-                                                <div class="col-md-3 col-xs-3 mb-3">
-                                                    <label>失效日期</label>
-                                                  <el-date-picker
-                                                      v-model="medicine.medicineExpire"
-                                                      type="date"
-                                                      placeholder="选择日期">
-                                                  </el-date-picker>
+                                              <div class="col-md-3 col-xs-3 mb-3">
+                                                <label>挂号日期</label>
+                                                <el-date-picker
 
-                                                </div>
+                                                    v-model="medicine.medicineExpire"
+                                                    type="date"
+                                                    placeholder="选择日期"
+                                                    value-format="yyyy-MM-dd">
+                                                </el-date-picker>
+                                              </div>
 
                                               <div class="col-md-3 col-xs-3 mb-3">
                                                 <label>分类</label>
@@ -131,10 +132,10 @@
                                                 <input v-model="medicine.medicinePrice" type="text" class="form-control" placeholder="单价" value="" required>
 
                                               </div>
-                                            <div class="col-md-9 col-xs-3 mb-3"></div>
-                                            <div class="col-md-12 text-center">
-                                                <a class="btn btn-primary" @click=" addMe()" style="margin-top: 26px;">保存</a>
-                                            </div>
+                                              <div class="col-md-9 col-xs-3 mb-3"></div>
+                                              <div class="col-md-12 text-center">
+                                                  <a class="btn btn-primary"  @click=" addMe()" style="margin-top: 26px;">保存</a>
+                                              </div>
                                             </div>
                                         </form>
                                     </div>
@@ -182,7 +183,6 @@
               if (response.data) {
                 _this.$alert('新增药品成功！', '新增药品', {
                   confirmButtonText: '确定',
-                  cancelButtonText: '取消',
                   callback: action => {
 
                     window.location.href = "/managerDrug"

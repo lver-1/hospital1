@@ -58,33 +58,50 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
-<!--                                  <input type="text" id="myInput" @click="myFunction()" placeholder="搜索...">-->
 
-                                    <table id="myTable" class="table table-striped table-bordered">
+                                  <el-table
+                                      :data="medicine.filter(data => !search || data.medicineName.toLowerCase().includes(search.toLowerCase()))"
+                                      style="width: 100%"
+                                      height="520">
 
-                                        <thead>
-                                        <tr>
-                                            <th class="col-md-2">药品id</th>
-                                            <th class="col-md-2">药品名称</th>
-                                            <th class="col-md-2">价格</th>
-                                            <th class="col-md-2">查看全部信息</th>
-                                            <th class="col-md-2">修改药品信息</th>
-                                            <th class="col-md-2">下架药品</th>
-                                        </tr>
-                                        </thead>
+                                    <el-table-column
+                                        label="药品id"
+                                        prop="medicineId">
+                                    </el-table-column>
 
-                                        <tbody>
-                                        <tr v-for="item in medicine">
-                                            <td>{{item.medicineId}}</td>
-                                            <td>{{item.medicineName}}</td>
-                                            <td>{{item.medicinePrice}}</td>
-                                            <td><button class="btn btn-primary disabled" @click="findMedicine(item)">查看</button></td>
-                                            <td><button class="btn btn-primary disabled" @click="updateMedicine(item)">修改</button></td>
-                                            <td><button class="btn btn-primary disabled" @click="medicineBan(item)">下架</button></td>
-                                        </tr>
-                                        </tbody>
+                                    <el-table-column
+                                        label="药品名字"
+                                        prop="medicineName">
+                                    </el-table-column>
+                                    <el-table-column
+                                        label="药品价格"
+                                        prop="medicinePrice">
+                                    </el-table-column>
+                                    <el-table-column
+                                        align="right">
+                                      <template slot="header" slot-scope="scope">
+                                        <el-input
+                                            v-model="search"
+                                            size="mini"
+                                            placeholder="输入关键字搜索"/>
+                                      </template>
+                                      <template slot-scope="scope">
+                                        <el-button
+                                            size="mini"
+                                            type="primary" plain round
+                                            @click="findMedicine(scope.row)">查看全部信息</el-button>
+                                        <el-button
+                                            size="mini"
+                                            type="warning" plain round
+                                            @click="updateMedicine(scope.row)">修改</el-button>
+                                        <el-button
+                                            size="mini"
+                                            type="danger" plain round
+                                            @click="medicineBan(scope.row)">下架</el-button>
+                                      </template>
+                                    </el-table-column>
 
-                                    </table>
+                                  </el-table>
 
                                 </div>
                             </div>
@@ -106,26 +123,41 @@
 </template>
 
 <script>
-
     export default {
-        name: "managerDrug",
 
+        name: "managerDrug",
         created(){
             let _this = this
             axios.get('http://localhost:8989/hospital/medicine/list/0').then(function (resp) {
                 _this.medicine = resp.data
-
             })
             
         },
 
         data(){
             return {
-                medicine: {},
+                medicine: {
+                  medicineId: "",
+                  medicineName: "",
+                  medicineFactory: "",//厂家
+                  medicineNo: "",//批号
+                  medicineSpecification: "",//规格
+                  medicineType: "",//类型
+                  medicineUnit: "",//单位
+                  medicineUsage: "",//用法
+                  medicineExpire: "",//失效日期
+                  medicineClassification: "",//分类
+                  medicineDisable: 0,//是否上架
+                  medicineRepertory: 0,//库存
+                  medicinePrice: ""
+                },
+              search: ''
             }
         },
 
+
         methods:{
+
             findMedicine(object){
                 this.$router.push('/drugInformation?fid='+object.medicineId)
             },
@@ -133,7 +165,6 @@
             updateMedicine(object){
                 this.$router.push('/changeDrug?cid='+object.medicineId)
             },
-
 
           medicineBan(object) {
             let _this = this
@@ -148,7 +179,6 @@
                   _this.$alert(object.medicineName + '下架成功！', '下架药品', {
                     confirmButtonText: '确定',
                     callback: action => {
-                      //跳转到/table
                       location.reload()
                     }
                   });
@@ -160,25 +190,7 @@
             });
 
           },
-          // myFunction() {
-          //   // 声明变量
-          //   var input, filter, table, tr, td, i;
-          //   input = document.getElementById("myInput");
-          //   filter = input.value.toUpperCase();
-          //   table = document.getElementById("Table");
-          //   tr = table.getElementsByTagName("tr");
-          //   // 循环表格每一行，查找匹配项
-          //   for (i = 0; i < tr.length; i++) {
-          //     td = tr[i].getElementsByTagName("td")[0];
-          //     if (td) {
-          //       if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-          //         tr[i].style.display = "";
-          //       } else {
-          //         tr[i].style.display = "none";
-          //       }
-          //     }
-          //   }
-          // }
+
         }
 
     }
